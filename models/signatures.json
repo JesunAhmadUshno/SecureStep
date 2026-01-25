@@ -1,0 +1,28 @@
+{
+  "model": "Signatures",
+  "fields": {
+    "tenant_id": "string",
+    "wr_1": "string",
+    "wr_2": "string",
+    "wr_3": "string",
+    "wr_4": "string",
+    "wr_5": "string",
+    "wr_6": "string",
+    "wr_7": "string",
+    "wr_8": "string",
+    "wr_9": "string",
+    "wr_10": "string",
+    "wr_11": "string",
+    "wr_12": "string",
+    "wr_13": "string",
+    "wr_14": "string",
+    "wr_15": "string",
+    "wr_16": "string",
+    "wr_17": "string",
+    "wr_18": "string",
+    "wr_19": "string",
+    "wr_20": "string",
+    "wr_21": "string",
+    "wr_22": "string"
+  }
+}

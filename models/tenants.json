@@ -1,0 +1,10 @@
+{
+  "model": "Tenants",
+  "fields": {
+    "name": "string",
+    "dob": "date",
+    "nationality": "string",
+    "shoe_size": "string",
+    "next_of_kin": "string"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "model": "Checklist",
+  "fields": {
+    "tenant_id": "string",
+    "uc_statement": "boolean",
+    "photo_id": "boolean",
+    "ni_proof": "boolean"
+  }
+}

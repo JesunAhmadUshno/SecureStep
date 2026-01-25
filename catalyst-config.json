@@ -1,0 +1,23 @@
+{
+  "project_name": "SecureSteps Pro",
+  "project_id": "securesteps-pro",
+  "version": "1.0.0",
+  "functions": [
+    {
+      "name": "ocr",
+      "runtime": "python3.9",
+      "handler": "ocr.main",
+      "triggers": ["api"]
+    }
+  ],
+  "client": {
+    "path": "./client"
+  },
+  "datastore": {
+    "models": [
+      "Tenants",
+      "Checklist",
+      "Signatures"
+    ]
+  }
+}
