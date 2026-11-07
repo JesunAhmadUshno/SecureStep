@@ -4,6 +4,13 @@ SecureStep is a tenant verification app that runs on Zoho Catalyst. It
 pairs a React client with one Python serverless function and three
 data models: tenants, a document checklist, and signatures.
 
+Live dashboard: https://jesunahmadushno.github.io/SecureStep/
+
+The dashboard (source in `site/`) replays the wizard with the mock OCR
+record, draws the architecture from `catalyst-config.json`, and checks the
+data contract between the function, the client and the models. Every number
+on it is parsed from the repo's files at build time.
+
 ## Start here
 
 1. Read `catalyst-config.json` first. It names the project
@@ -17,7 +24,8 @@ data models: tenants, a document checklist, and signatures.
    npm run dev
    ```
 
-3. Read `functions/ocr/main.py` before you wire anything. The OCR
+3. Run the handler tests: `python3 -m unittest discover -s functions/ocr`.
+4. Read `functions/ocr/main.py` before you wire anything. The OCR
    call is a mock today. The Status section below says exactly what
    that means.
 
@@ -40,10 +48,18 @@ data models: tenants, a document checklist, and signatures.
   integrate the real Zia OCR API. Wiring the real API is the next
   step.
 - **No live deployment URL is recorded in this repo.**
-- **The tree carries a committed `node_modules` folder.** It holds
-  1,160 of the 1,183 files in this repo. The real project is 23
-  files. The removal step is written up in the project notes and
-  runs at the next push.
+- **The submit step saves nothing.** `handleSubmit` in
+  `client/src/App.jsx` shows an alert and has a TODO to send data to the
+  backend.
+- **The data contract does not line up yet.** OCR returns `Address`, but
+  the Tenants model has no address field; Tenants also lists fields the
+  client never collects, and nothing writes the Checklist model. The
+  dashboard's contract check lists each gap.
+- **Tests:** `python3 -m unittest discover -s functions/ocr` runs smoke
+  tests for the OCR handler. The client has no tests. `docs/research-review.md`
+  grades the project and lists what each remaining gap needs.
+- **No `node_modules` is committed any more.** It was removed in commit
+  3285f1f and is listed in `.gitignore`.
 
 ## Stack
 
