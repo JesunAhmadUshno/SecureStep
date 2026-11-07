@@ -1,5 +1,23 @@
 import json
-from catalyst_zoho_ocr import perform_ocr  # Placeholder for Zoho Zia OCR SDK
+
+
+# Mock implementation for local dev
+# Replace with actual Zoho Zia OCR integration
+def mock_perform_ocr(image_data):
+    # TODO: Integrate with Zoho Zia OCR API
+    return {
+        'Name': 'Sample Name',
+        'DOB': '1990-01-01',
+        'Address': '123 Example St, City, Country'
+    }
+
+
+try:
+    from catalyst_zoho_ocr import perform_ocr  # Placeholder for Zoho Zia OCR SDK
+except ImportError:
+    # The SDK module does not exist yet, so local runs and tests use the mock.
+    perform_ocr = mock_perform_ocr
+
 
 def handler(event, context):
     # Assume event['body'] contains the image file (base64 or binary)
@@ -15,15 +33,4 @@ def handler(event, context):
     return {
         'statusCode': 200,
         'body': json.dumps(ocr_result)
-    }
-
-# Mock implementation for local dev
-# Replace with actual Zoho Zia OCR integration
-
-def perform_ocr(image_data):
-    # TODO: Integrate with Zoho Zia OCR API
-    return {
-        'Name': 'Sample Name',
-        'DOB': '1990-01-01',
-        'Address': '123 Example St, City, Country'
     }
