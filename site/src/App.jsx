@@ -391,7 +391,8 @@ function Status() {
     { t: 'Submit saves nothing', d: `handleSubmit shows “${SUBMIT_ALERT}” and has a TODO to send data to the backend. The end-to-end flow is unproven.`, s: SUBMIT_TODO ? 'bad' : 'good' },
     { t: 'Data contract gaps', d: `Address comes back from OCR but Tenants has no address field; Tenants asks for fields nothing collects; the Checklist table is never written. See the contract check above.`, s: 'bad' },
     { t: 'Privacy and security not yet addressed', d: 'The product would handle ID images and signatures, but there is no auth, no server-side check of upload type or size, signatures are free text, and no retention or consent policy is written down.', s: 'bad' },
-    { t: 'No deployment, no measured results', d: 'No live product URL is recorded. This page is a dashboard of the source, not the product. The client build itself was not run for this page.', s: 'warn' },
+    { t: 'No deployment, no measured results', d: 'No live product URL is recorded. This page is a dashboard of the source, not the product.', s: 'warn' },
+    { t: 'Client build fails', d: 'Running npm ci && npm run build in client/ stops because PostCSS cannot find tailwindcss: Tailwind 4 is installed at the repo root, while the client uses Tailwind 3 style config.', s: 'bad' },
     { t: 'Tests', d: 'A stdlib unittest smoke test covers the OCR handler (400 on empty body, 200 + the three keys otherwise). The client has no tests; the contract check here runs on every site build.', s: 'info' },
   ];
   return (
