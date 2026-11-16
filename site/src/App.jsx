@@ -79,7 +79,7 @@ function Dock() {
 export default function App() {
   useReveal();
   return (
-    <div className="wrap">
+    <div className="wrap"><a className="skip" href="#top">Skip to content</a>
       <MenuBar />
       <div className="glow" aria-hidden="true" />
       <Hero />
@@ -92,7 +92,7 @@ export default function App() {
       <Dock />
       <footer>
         Every number on this page is parsed from <code>catalyst-config.json</code>, <code>models/*.json</code>, <code>client/src/App.jsx</code> and <code>functions/ocr/main.py</code> at build time, and a build-time check re-derives them and runs the Python handler. The wizard is a replay in your browser; no file leaves your device.
-      </footer>
+      <nav className="support" aria-label="Support this work"><a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a><a href="https://github.com/sponsors/JesunAhmadUshno">Donate</a><a href="https://buymeacoffee.com/jesun">Buy Me a Coffee</a><a href="https://calendly.com/jesunahmadushno/30min">Work with me</a></nav></footer>
     </div>
   );
 }
@@ -100,7 +100,7 @@ export default function App() {
 function Hero() {
   const tenantGap = CONTRACT.find((c) => c.id === 'ocr-tenants');
   return (
-    <header className="card hero window" id="top" data-title="SecureStep — README">
+    <header className="card hero window" id="top" data-title="SecureStep - README">
       <div className="head">
         <p className="eyebrow">Engineering prototype · Zoho Catalyst · project “{config.project_name}”</p>
         <span className={`pill ${IS_MOCK ? 'warn' : 'good'}`}>● OCR {IS_MOCK ? 'is a mock' : 'wired'}</span>
@@ -137,7 +137,7 @@ function Wizard() {
   const prog = progress(s, FORMS);
   const req = requiredForms(s, FORMS);
   return (
-    <section id="wizard" className="card window reveal" data-title="onboarding-wizard.app — replay">
+    <section id="wizard" className="card window reveal" data-title="onboarding-wizard.app - replay">
       <div className="head">
         <div>
           <p className="eyebrow">Replay · runs in your browser</p>
@@ -230,7 +230,7 @@ function Architecture() {
   const n = Object.fromEntries(nodes.map((x) => [x.id, x]));
   const hl = (id) => (hover && hover.id !== id ? 0.4 : 1);
   return (
-    <section id="arch" className="card window reveal" data-title="catalyst-config.json — architecture">
+    <section id="arch" className="card window reveal" data-title="catalyst-config.json - architecture">
       <p className="eyebrow">Architecture</p>
       <h2>One client, one function, three tables, and nothing yet writes to the tables.</h2>
       <p className="sub">
@@ -272,7 +272,7 @@ function Models() {
   };
   const fields = Object.entries(m.fields);
   return (
-    <section id="models" className="card window reveal" data-title="models/ — data model explorer">
+    <section id="models" className="card window reveal" data-title="models/ - data model explorer">
       <div className="head">
         <div>
           <p className="eyebrow">Data models</p>
@@ -303,7 +303,7 @@ function Contract() {
   const [id, setId] = useState(CONTRACT[1].id);
   const c = CONTRACT.find((x) => x.id === id);
   return (
-    <section id="contract" className="card window reveal" data-title="contract-check.js — live">
+    <section id="contract" className="card window reveal" data-title="contract-check.js - live">
       <div className="head">
         <div>
           <p className="eyebrow">Live data-contract check</p>
@@ -328,7 +328,7 @@ function Contract() {
           <thead><tr><th>{c.leftLabel}</th><th>{c.rightLabel}</th><th>Result</th></tr></thead>
           <tbody>
             {c.rows.map((r, i) => { const [cls, txt] = STATUS_PILL[r.status]; return (
-              <tr key={i}><td className="mono">{r.left ?? '—'}</td><td className="mono">{r.right ?? '—'}</td><td><span className={`pill ${cls}`}>{txt ?? c.mappedLabel}</span></td></tr>
+              <tr key={i}><td className="mono">{r.left ?? '-'}</td><td className="mono">{r.right ?? '-'}</td><td><span className={`pill ${cls}`}>{txt ?? c.mappedLabel}</span></td></tr>
             ); })}
           </tbody>
         </table>
@@ -351,7 +351,7 @@ function Routing() {
   const narrow = useNarrow();
   const cols = narrow ? 6 : 11, W = narrow ? 600 : 960, cw = (W - 20) / cols, H = Math.ceil(ALL_FORMS.length / cols) * 74 + 24;
   return (
-    <section id="routing" className="card window reveal" data-title="form-routing — A/B explorer">
+    <section id="routing" className="card window reveal" data-title="form-routing - A/B explorer">
       <div className="head">
         <div>
           <p className="eyebrow">Form routing</p>
@@ -396,7 +396,7 @@ function Status() {
     { t: 'Tests', d: 'A stdlib unittest smoke test covers the OCR handler (400 on empty body, 200 + the three keys otherwise). The client has no tests; the contract check here runs on every site build.', s: 'info' },
   ];
   return (
-    <section id="status" className="card window reveal" data-title="STATUS.md — honest status">
+    <section id="status" className="card window reveal" data-title="STATUS.md - honest status">
       <p className="eyebrow">Limitations and roadmap</p>
       <h2>What works, what is mocked, and what is missing.</h2>
       <div className="grid2" style={{ marginTop: 16 }}>
