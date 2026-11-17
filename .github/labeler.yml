@@ -1,0 +1,18 @@
+client:
+  - changed-files:
+      - any-glob-to-any-file: ["client/**"]
+functions:
+  - changed-files:
+      - any-glob-to-any-file: ["functions/**"]
+models:
+  - changed-files:
+      - any-glob-to-any-file: ["models/**"]
+site:
+  - changed-files:
+      - any-glob-to-any-file: ["site/**"]
+docs:
+  - changed-files:
+      - any-glob-to-any-file: ["docs/**", "README.md"]
+automation:
+  - changed-files:
+      - any-glob-to-any-file: [".github/**"]
